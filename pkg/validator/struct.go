@@ -6,18 +6,18 @@ import (
 
 var validate = validator.New()
 
-type ErrorResponse struct {
+type ErrorFields struct {
 	Field string `json:"field"`
 	Tag   string `json:"tag"`
 	Value string `json:"value"`
 }
 
-func ValidateStruct[T any](data T) ([]ErrorResponse, error) {
-	var errors []ErrorResponse
+func ValidateStruct[T any](data T) ([]ErrorFields, error) {
+	var errors []ErrorFields
 	err := validate.Struct(data)
 	if err != nil {
 		for _, err := range err.(validator.ValidationErrors) {
-			var element ErrorResponse
+			var element ErrorFields
 
 			// element.Field = FindJsonTagName(err, err.Field())
 			element.Field = err.Field()
