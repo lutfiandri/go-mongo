@@ -49,10 +49,10 @@ func (c *userController) InsertOne(ctx *fiber.Ctx) error {
 	}
 	if errs, err := validator.ValidateStruct(&body); err != nil {
 		ctx.Status(fiber.StatusUnprocessableEntity).JSON(contract.ErrorResponse{
-			OK:          false,
-			StatusCode:  fiber.StatusUnprocessableEntity,
-			Error:       err.Error(),
-			ErrorFields: errs,
+			OK:                false,
+			StatusCode:        fiber.StatusUnprocessableEntity,
+			Error:             err.Error(),
+			StructErrorFields: errs,
 		})
 		return nil
 	}

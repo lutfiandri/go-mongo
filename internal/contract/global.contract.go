@@ -9,8 +9,8 @@ type Response struct {
 }
 
 type ErrorResponse struct {
-	OK          bool                    `json:"ok"`
-	StatusCode  int                     `json:"status_code"`
-	Error       string                  `json:"error"`
-	ErrorFields []validator.ErrorFields `json:"error_fields"`
+	OK                bool                          `json:"ok"`
+	StatusCode        int                           `json:"status_code"`
+	Error             string                        `json:"error"`
+	StructErrorFields []validator.StructErrorFields `json:"error_fields"`
 }
